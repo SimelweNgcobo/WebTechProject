@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Simelwe Ngcobo" />
+  <meta name="description" content="EcoSmart Water Bottle" />
+  <title>EcoSmart Water Bottle</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+    table {
+      width: 250px;
+      border: 3px solid black;
+      border-collapse: collapse;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+    }
+    caption {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+    footer {
+      background-color: rgb(33, 31, 31);
+      color: white;
+      padding: 20px;
+    }
+    #Reset {
+      color: white;
+      background-color: rgb(255, 30, 9);
+      border: none;
+      height: 30px;
+      width: 70px;
+      cursor: pointer;
+    }
+    #Pay {
+      color: white;
+      background-color: rgb(72, 214, 72);
+      border: none;
+      height: 30px;
+      width: 70px;
+      cursor: pointer;
+    }
+    .price-display {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <caption><h2>EcoSmart Bottle Pricing</h2></caption>
+    <thead>
+      <tr>
+        <th>Bottle Colour</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Blue</td><td>R250</td></tr>
+      <tr><td>Red</td><td>R250</td></tr>
+      <tr><td>Pink</td><td>R250</td></tr>
+      <tr><td>Orange</td><td>R250</td></tr>
+      <tr><td>Rainbow</td><td>R350</td></tr>
+      <tr><td>Own Picture</td><td>R650</td></tr>
+    </tbody>
+  </table>
+
+  <p>Any problems or difficulties? Please <a href="mailto:EcoSmart@gmail.com" style="color: dodgerblue;">email us</a>.</p>
+  <p>For "Own Picture", please <a href="mailto:EcoSmart@gmail.com" style="color: dodgerblue;">email us</a>.</p>
+
+  <footer>
+    <form action="index.php" method="post">
+      <label for="Colour">Select Colour:</label><br>
+      <select name="Colour" id="Colour" required onchange="changetext()">
+        <option value="Blue">Blue</option>
+        <option value="Red">Red</option>
+        <option value="Pink">Pink</option>
+        <option value="Orange">Orange</option>
+        <option value="Rainbow">Rainbow</option>
+        <option value="Own Picture">Own Picture</option>
+      </select>
+      <br><br>
+
+      <label for="payment">Payment Method:</label><br>
+      <select name="payment" id="payment">
+        <option>Mastercard</option>
+        <option>Visa</option>
+      </select>
+      <br><br>
+
+      <input type="text" placeholder="Card Number" required maxlength="16" pattern="\d{16}" /><br><br>
+      <label for="Expiry">Expiry Date:</label>
+      <input type="date" id="Expiry" required /><br><br>
+      <input type="text" placeholder="CVV" required maxlength="3" pattern="\d{3}" /><br><br>
+      <input type="text" placeholder="Card Holder Name" required /><br><br>
+       <hr>
+      <p>R100 DELIVERY FEE</p>
+      <p class="price-display" id="totalPrice">R0.00</p>
+      <a href="web Tech Assigment.html">
+      <button id="Pay">Pay</button>
+      </a>
+
+      <button type="reset" id="Reset">Reset</button>
+    </form>
+  </footer>
+
+  <script>
+    function changetext() {
+      const colour = document.getElementById("Colour").value;
+      const priceMap = {
+        "Blue": 250,
+        "Red": 250,
+        "Pink": 250,
+        "Orange": 250,
+        "Rainbow": 350,
+        "Own Picture": 650
+      };
+
+      const basePrice = priceMap[colour] || 0;
+      const deliveryFee = 100;
+      const totalPrice = basePrice + deliveryFee;
+
+      document.getElementById("totalPrice").textContent = `R${totalPrice} (R${basePrice}+${deliveryFee})`;
+    }
+  </script>
+</body>
+</html>
+
